@@ -46,5 +46,5 @@ RedisUtil redisUtil = new RedisUtil(pool);
 ```
 RedisUtil redis = ApiConfigKit.getCache();
 ```
-# 使用示例：
-### 详见测试用例
+### 5、使用示例：
+#### 详见测试用例
