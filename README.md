@@ -5,7 +5,7 @@
 - 实现菜单、客服文本消息、access_token、js_ticket、url授权包装、获取用户信息等功能
 ##. 使用方式
 ###1、 引入jar包：
-``` java 
+```
 <dependency>
   <groupId>com.meihaofenqi</groupId>
   <artifactId>wechat-util</artifactId>
@@ -13,17 +13,17 @@
 </dependency>
 ```
 ###2、 配置相对微信账号的配置
-``` java
+```
 ApiConfig ac = ApiConfig.builder().appId("xxx").appSecret("xxx").build();
 ApiConfigKit.putApiConfig(ac);
 ```
 ###3、 根据appId获取对应的配置
-``` java
+```
 ApiConfig conf = ApiConfigKit.getApiConfig(APPID_TEST);
 ```
 ###4、 初始化jedis缓存池
 ####-调用JedisConfig的init方法
-``` java
+```
  public static JedisPool init(JedisConfig config) {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
         jedisPoolConfig.setMaxIdle(config.getMaxIdle());
@@ -34,15 +34,15 @@ ApiConfig conf = ApiConfigKit.getApiConfig(APPID_TEST);
     }
 ```
 ####-构造一个缓存对象RedisUtil：
-``` java 
+```
 RedisUtil redisUtil = new RedisUtil(pool);
  ```
  ####-将redisUtil设为全局使用：
-``` java
+```
  ApiConfigKit.initCache(redisUtil);
  ```
  ####-获取缓存对象：
-``` java
+```
 RedisUtil redis = ApiConfigKit.getCache();
 ```
 # 使用示例：
