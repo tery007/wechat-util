@@ -37,12 +37,12 @@ ApiConfig conf = ApiConfigKit.getApiConfig(APPID_TEST);
 #### -构造一个缓存对象RedisUtil：
 ```
 RedisUtil redisUtil = new RedisUtil(pool);
- ```
- ####-将redisUtil设为全局使用：
+```
+#### -将redisUtil设为全局使用：
 ```
  ApiConfigKit.initCache(redisUtil);
  ```
- ####-获取缓存对象：
+#### -获取缓存对象：
 ```
 RedisUtil redis = ApiConfigKit.getCache();
 ```
