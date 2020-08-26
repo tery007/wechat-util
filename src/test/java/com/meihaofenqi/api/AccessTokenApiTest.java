@@ -7,9 +7,9 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.meihaofenqi.api.CommonApp.APPID_TEST;
-import static com.meihaofenqi.api.CommonApp.localTestInit;
-import static com.meihaofenqi.api.CommonApp.testConf;
+import static com.meihaofenqi.api.TestBase.APPID_TEST;
+import static com.meihaofenqi.api.TestBase.localTestInit;
+import static com.meihaofenqi.api.TestBase.testConf;
 
 /**
  * @author wanglei
@@ -25,6 +25,9 @@ public class AccessTokenApiTest {
         localTestInit();
     }
 
+    /**
+     * 获取access_token
+     */
     @Test
     public void test() {
         String actualToken = "36_Qc121wtMQVLXdo15QLAlrvn8AbRtvWH-1N_e4e_67QZ1au0uQIf7wpenfgh6r9wPmP1z8MYYRPjRkcMyBUMhYX590JQuDvDERYTPTSQbbIrt2ZQc4Ln3Q7H9VH9OYf-oNQgkClxsc641H0oLMOObABARTT";

@@ -7,14 +7,15 @@ import com.meihaofenqi.wechat.sdk.plugin.redis.RedisUtil;
 
 /**
  * @author wanglei
- * @description
+ * @description:测试基本配置
  * @date Created on 2020/8/19
  **/
-public class CommonApp {
+public class TestBase {
 
     /** 测试微信号 */
-    public static String    APPID_TEST     = "wxbe822210e70823fd";
-    public static String    APPSECRET_TEST = "e10501e01aef7c796380c024228877d5";
+    public static String APPID_TEST     = "wxbe822210e70823fd";
+    public static String APPSECRET_TEST = "e10501e01aef7c796380c024228877d5";
+
     public static ApiConfig testConf;
 
     static {
@@ -25,7 +26,7 @@ public class CommonApp {
 
 
     /**
-     * 美好的研发宝宝本地测试初始化配置：
+     * 本地测试初始化配置：
      * 设置app微信参数、开启redis缓存连接池
      */
     public static void localTestInit() {

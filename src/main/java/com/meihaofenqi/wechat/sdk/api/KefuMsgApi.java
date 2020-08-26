@@ -17,16 +17,16 @@ import java.util.Map;
  **/
 @Slf4j
 @Data
-public class CustomerServiceApi {
+public class KefuMsgApi {
 
     private static ApiConfig apiConfig;
 
-    public CustomerServiceApi(ApiConfig ac) {
+    private KefuMsgApi(ApiConfig ac) {
         apiConfig = ac;
     }
 
-    public static CustomerServiceApi newInstance(ApiConfig af) {
-        return new CustomerServiceApi(af);
+    public static KefuMsgApi newInstance(ApiConfig af) {
+        return new KefuMsgApi(af);
     }
 
     private static String CUSTOM_MESSAGE_URL = "https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=";

@@ -85,7 +85,6 @@ public class ApiConfigKit {
 
 
     public static ApiConfig getApiConfig(String appId) {
-        log.info("appId:{}", appId);
         ApiConfig cfg = CFG_MAP.get(appId);
         if (cfg == null) {
             throw new WechatException("需事先调用 ApiConfigKit.putApiConfig(apiConfig) 将 appId对应的 ApiConfig 对象存入");

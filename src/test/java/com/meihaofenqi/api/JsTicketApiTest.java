@@ -8,8 +8,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.meihaofenqi.api.CommonApp.localTestInit;
-import static com.meihaofenqi.api.CommonApp.testConf;
+import static com.meihaofenqi.api.TestBase.localTestInit;
+import static com.meihaofenqi.api.TestBase.testConf;
 
 /**
  * @author wanglei

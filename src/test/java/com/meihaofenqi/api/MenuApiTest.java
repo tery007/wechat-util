@@ -15,8 +15,8 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-import static com.meihaofenqi.api.CommonApp.APPID_TEST;
-import static com.meihaofenqi.api.CommonApp.localTestInit;
+import static com.meihaofenqi.api.TestBase.APPID_TEST;
+import static com.meihaofenqi.api.TestBase.localTestInit;
 
 /**
  * @author wanglei

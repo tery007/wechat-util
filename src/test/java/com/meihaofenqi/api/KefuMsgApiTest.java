@@ -1,15 +1,15 @@
 package com.meihaofenqi.api;
 
 import com.alibaba.fastjson.JSON;
-import com.meihaofenqi.wechat.sdk.api.CustomerServiceApi;
+import com.meihaofenqi.wechat.sdk.api.KefuMsgApi;
 import com.meihaofenqi.wechat.sdk.base.ApiResult;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static com.meihaofenqi.api.CommonApp.localTestInit;
-import static com.meihaofenqi.api.CommonApp.testConf;
+import static com.meihaofenqi.api.TestBase.localTestInit;
+import static com.meihaofenqi.api.TestBase.testConf;
 
 /**
  * @author wanglei
@@ -17,7 +17,7 @@ import static com.meihaofenqi.api.CommonApp.testConf;
  * @date Created on 2020/8/20
  **/
 @Slf4j
-public class CustomerServiceApiTest {
+public class KefuMsgApiTest {
 
 
     @Before
@@ -26,7 +26,7 @@ public class CustomerServiceApiTest {
     }
 
     /**
-     * 发送文本消息
+     * 发送客服文本消息
      * 本测试用例为：用户取消关注，发送消息返回报错
      */
     @Test
@@ -40,7 +40,7 @@ public class CustomerServiceApiTest {
                 "\n" +
                 "<a href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxd2ff381c818e334b&redirect_uri=http%3A%2F%2Fwechat.meihaofenqi.com%2Fh5%2Fsatis%3Fsi%3D2008150020%26sf%3D3&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect'>【不满意】</a>\n";
         // 测试发送纯文本消息
-        ApiResult result = CustomerServiceApi.newInstance(testConf).sendText(openId, text);
+        ApiResult result = KefuMsgApi.newInstance(testConf).sendText(openId, text);
         Assert.assertEquals("{\"attrs\":{\"errcode\":45015,\"errmsg\":\"response out of time limit or subscription is canceled rid: 5f3e3696-11e78743-10655b48\"},\"json\":\"{\\\"errcode\\\":45015,\\\"errmsg\\\":\\\"response out of time limit or subscription is canceled rid: 5f3e3696-11e78743-10655b48\\\"}\"}"
                 , JSON.toJSONString(result));
     }
