@@ -3,8 +3,9 @@
 ## 实现功能：
 - 自带redis缓存，存储access_token和js_token，使用者只需配置缓存池参数
 - 实现菜单、客服文本消息、access_token、js_ticket、url授权包装、获取用户信息等功能
-##. 使用方式
-###1、 引入jar包：
+
+## 使用方式
+### 1、 引入jar包：
 ```
 <dependency>
   <groupId>com.meihaofenqi</groupId>
