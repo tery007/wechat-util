@@ -12,17 +12,17 @@
   <version>0.0.1-SNAPSHOT</version>
 </dependency>
 ```
-###2、 配置相对微信账号的配置
+### 2、 配置相对微信账号的配置
 ```
 ApiConfig ac = ApiConfig.builder().appId("xxx").appSecret("xxx").build();
 ApiConfigKit.putApiConfig(ac);
 ```
-###3、 根据appId获取对应的配置
+### 3、 根据appId获取对应的配置
 ```
 ApiConfig conf = ApiConfigKit.getApiConfig(APPID_TEST);
 ```
-###4、 初始化jedis缓存池
-####-调用JedisConfig的init方法
+### 4、 初始化jedis缓存池
+#### -调用JedisConfig的init方法
 ```
  public static JedisPool init(JedisConfig config) {
         JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
@@ -33,7 +33,7 @@ ApiConfig conf = ApiConfigKit.getApiConfig(APPID_TEST);
         return new JedisPool(jedisPoolConfig, config.getHost(), config.getPort(), config.getTimeout(), config.getPassword());
     }
 ```
-####-构造一个缓存对象RedisUtil：
+#### -构造一个缓存对象RedisUtil：
 ```
 RedisUtil redisUtil = new RedisUtil(pool);
  ```
