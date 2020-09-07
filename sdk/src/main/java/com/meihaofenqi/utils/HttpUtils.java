@@ -19,15 +19,6 @@ public class HttpUtils {
 
     private HttpUtils() {}
 
-    static {
-        HttpDelegate delegateToUse = null;
-        // okhttp3.OkHttpClient?
-        if (ClassUtils.isPresent("okhttp3.OkHttpClient", HttpUtils.class.getClassLoader())) {
-            delegateToUse = new OkHttp3Delegate();
-        }
-        delegate = delegateToUse;
-    }
-
     public static String get(String url) {
         return delegate.get(url);
     }
@@ -60,6 +51,15 @@ public class HttpUtils {
 
     public static void setHttpDelegate(HttpDelegate httpDelegate) {
         delegate = httpDelegate;
+    }
+
+    static {
+        HttpDelegate delegateToUse = null;
+        // okhttp3.OkHttpClient?
+        if (ClassUtils.isPresent("okhttp3.OkHttpClient", HttpUtils.class.getClassLoader())) {
+            delegateToUse = new OkHttp3Delegate();
+        }
+        delegate = delegateToUse;
     }
 
 
@@ -153,9 +153,7 @@ public class HttpUtils {
 
                 try (okhttp3.Response response = httpsClient.newCall(request).execute()) {
 
-                    if (!response.isSuccessful()) {
-                        throw new RuntimeException("Unexpected code " + response);
-                    }
+                    if (!response.isSuccessful()) throw new RuntimeException("Unexpected code " + response);
 
                     return response.body().string();
                 }

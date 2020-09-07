@@ -40,10 +40,8 @@ public class MsgInterceptor implements Interceptor {
 //            } else {
 //                controller.renderText("签名验证失败，请确定是微信服务器在发送消息过来");
 //            }
-
-
         } catch (Exception e) {
-
+            log.error("intercept error:{}", e.getMessage());
         }
     }
 

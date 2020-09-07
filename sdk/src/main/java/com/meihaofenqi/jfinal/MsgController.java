@@ -13,11 +13,8 @@ import com.meihaofenqi.base.msg.in.MsgParser;
 import com.meihaofenqi.base.msg.out.OutMsg;
 import com.meihaofenqi.utils.HttpUtils;
 import com.meihaofenqi.utils.MsgEncryptKit;
-import com.meihaofenqi.utils.encrypt.SignatureCheckKit;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * @author wanglei
@@ -105,49 +102,6 @@ public abstract class MsgController extends Controller {
         return ApiConfigKit.getApiConfig(getPara("appId"));
     }
 
-    /**
-     * 配置开发者中心微信服务器所需的 url 与 token
-     *
-     * @param ac 控制器
-     */
-    public String configServer(HttpServletRequest request, ApiConfig ac) {
-        // 通过 echostr 判断请求是否为配置微信服务器回调所需的 url 与 token
-        String echostr = request.getParameter("echostr");
-        String signature = request.getParameter("signature");
-        String timestamp = request.getParameter("timestamp");
-        String nonce = request.getParameter("nonce");
-        boolean isOk = SignatureCheckKit.me.checkSignature(signature, ac.getToken(), timestamp, nonce);
-        if (isOk) {
-            return echostr;
-        } else {
-            log.error("验证失败：configServer");
-            return "";
-        }
-    }
-
-    /**
-     * 检测签名
-     */
-    public boolean checkSignature(HttpServletRequest request, ApiConfig ac) {
-        String signature = request.getParameter("signature");
-        String timestamp = request.getParameter("timestamp");
-        String nonce = request.getParameter("nonce");
-        if (StringUtils.isBlank(signature) || StringUtils.isBlank(timestamp) || StringUtils.isBlank(nonce)) {
-            log.error("==>request params has null value");
-            return false;
-        }
-
-        if (SignatureCheckKit.me.checkSignature(signature, ac.getToken(), timestamp, nonce)) {
-            return true;
-        } else {
-            log.error("check signature failure: " +
-                    " signature = " + request.getParameter("signature") +
-                    " timestamp = " + request.getParameter("timestamp") +
-                    " nonce = " + request.getParameter("nonce"));
-
-            return false;
-        }
-    }
 
     /**
      * 在接收到微信服务器的 InMsg 消息后后响应 OutMsg 消息

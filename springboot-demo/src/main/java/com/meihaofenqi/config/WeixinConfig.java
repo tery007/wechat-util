@@ -19,7 +19,7 @@ import java.util.Collections;
 
 /**
  * @author wanglei
- * @description
+ * @description：使用JFinal框架对微信消息统一拦截的配置
  * @date Created on 2020/9/1
  **/
 @Slf4j
@@ -42,7 +42,8 @@ public class WeixinConfig extends JFinalConfig {
     }
 
     @Override
-    public void configPlugin(Plugins me) {}
+    public void configPlugin(Plugins me) {
+    }
 
     @Override
     public void configInterceptor(Interceptors me) {
@@ -51,14 +52,21 @@ public class WeixinConfig extends JFinalConfig {
     }
 
     @Override
-    public void configEngine(Engine engine) {}
+    public void configEngine(Engine engine) {
+    }
 
     @Override
-    public void configHandler(Handlers me) {}
+    public void configHandler(Handlers me) {
+    }
 
     @Override
-    public void onStart() {}
+    public void onStart() {
+    }
 
+    /**
+     * springboot-注入SpringJFinalFilter、
+     * MsgInterceptor注入，拦截configRoute()对应的url
+     */
     @Bean
     public FilterRegistrationBean<Filter> registrationBean() {
         FilterRegistrationBean<Filter> f = new FilterRegistrationBean<>();

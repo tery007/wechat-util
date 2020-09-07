@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @author wanglei
- * @description
+ * @description：项目中的微信配置
  * @date Created on 2020/8/28
  **/
 @Data

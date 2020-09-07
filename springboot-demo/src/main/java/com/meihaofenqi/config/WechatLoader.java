@@ -12,7 +12,7 @@ import javax.annotation.PostConstruct;
 
 /**
  * @author wanglei
- * @description
+ * @description：初始化缓存、微信配置
  * @date Created on 2020/9/2
  **/
 @Slf4j

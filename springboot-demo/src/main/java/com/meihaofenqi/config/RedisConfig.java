@@ -11,7 +11,7 @@ import redis.clients.jedis.JedisPoolConfig;
 
 /**
  * @author wanglei
- * @description
+ * @description：redis缓存配置
  * @date Created on 2020/9/1
  **/
 @Slf4j
