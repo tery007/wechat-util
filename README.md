@@ -2,15 +2,15 @@
 
 ## 实现功能：
 - 自带redis缓存，存储access_token和js_token，使用者只需配置缓存池参数
-- 实现菜单、客服文本消息、access_token、js_ticket、url授权包装、获取用户信息等功能
+- 实现微信消息、菜单、客服文本消息、access_token、js_ticket、url授权包装、获取用户信息等功能
 
 ## 使用方式
 ### 1、 引入jar包：
 ```
 <dependency>
-  <groupId>com.meihaofenqi</groupId>
-  <artifactId>wechat-util</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+    <groupId>com.meihaofenqi</groupId>
+    <artifactId>wechat-util</artifactId>
+    <version>1.0.1-SNAPSHOT</version>
 </dependency>
 ```
 ### 2、 配置相对微信账号的配置
@@ -25,18 +25,38 @@ ApiConfig conf = ApiConfigKit.getApiConfig(APPID_TEST);
 ### 4、 初始化jedis缓存池
 #### -调用JedisConfig的init方法
 ```
- public static JedisPool init(JedisConfig config) {
-        JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
-        jedisPoolConfig.setMaxIdle(config.getMaxIdle());
-        jedisPoolConfig.setMinIdle(config.getMinIdle());
-        jedisPoolConfig.setMaxWaitMillis(config.getMaxWaitMillis());
-        jedisPoolConfig.setJmxEnabled(true);
-        return new JedisPool(jedisPoolConfig, config.getHost(), config.getPort(), config.getTimeout(), config.getPassword());
-    }
+ @Bean
+ public JedisPool redisPoolFactory() {
+     log.info("redis地址：" + host + ":" + port);
+     JedisPoolConfig jedisPoolConfig = new JedisPoolConfig();
+     jedisPoolConfig.setMaxIdle(maxIdle);
+     jedisPoolConfig.setMinIdle(minIdle);
+     jedisPoolConfig.setMaxWaitMillis(maxWaitMillis);
+     // 是否启用pool的jmx管理功能, 默认true
+     jedisPoolConfig.setJmxEnabled(true);
+     log.info("==> JedisPool配置成功");
+     return new JedisPool(jedisPoolConfig, host, port, timeout, password);
+ }
 ```
-#### -构造一个缓存对象RedisUtil：
+#### -初始化缓存和微信配置
 ```
-RedisUtil redisUtil = new RedisUtil(pool);
+@PostConstruct
+public void load() {
+    loadWeixinSdk(wechatAppConfig);
+    cacheInit(jedisPool);
+}
+
+public void loadWeixinSdk(WechatAppConfig w) {
+    ApiConfig ac = ApiConfig.builder().appId(w.getAppId()).appSecret(w.getAppSecret()).token(w.getToken()).build();
+    ApiConfigKit.putApiConfig(ac);
+    log.info("==> load weixin-api-config finished");
+}
+
+public void cacheInit(JedisPool pool) {
+    RedisUtil redisUtil = new RedisUtil(pool);
+    ApiConfigKit.initCache(redisUtil);
+    log.info("==> load jedis cache finished");
+}
 ```
 #### -将redisUtil设为全局使用：
 ```
