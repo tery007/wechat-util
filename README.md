@@ -57,9 +57,7 @@ public void cacheInit(JedisPool pool) {
     log.info("==> load jedis cache finished");
 }
 ```
-#### -获取ApiConfig对象：
-```
- ApiConfig apiConfig = ApiConfigKit.getApiConfig(appId);
+
  ```
 #### -获取缓存对象：
 ```
