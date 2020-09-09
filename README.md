@@ -23,7 +23,6 @@ ApiConfigKit.putApiConfig(ac);
 ApiConfig conf = ApiConfigKit.getApiConfig(APPID_TEST);
 ```
 ### 4、 初始化jedis缓存池
-#### -调用JedisConfig的init方法
 ```
  @Bean
  public JedisPool redisPoolFactory() {
@@ -58,13 +57,14 @@ public void cacheInit(JedisPool pool) {
     log.info("==> load jedis cache finished");
 }
 ```
-#### -将redisUtil设为全局使用：
+#### -获取ApiConfig对象：
 ```
- ApiConfigKit.initCache(redisUtil);
+ ApiConfig apiConfig = ApiConfigKit.getApiConfig(appId);
  ```
 #### -获取缓存对象：
 ```
 RedisUtil redis = ApiConfigKit.getCache();
 ```
 ### 5、使用示例：
-#### 详见测试用例
+##### 详见应用demo：
+http://git.meihaofenqi.net/wanglei/wechat-util-demo.git
