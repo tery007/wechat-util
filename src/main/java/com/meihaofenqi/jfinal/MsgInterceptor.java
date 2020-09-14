@@ -4,18 +4,16 @@ import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.StrKit;
-import com.jfinal.log.Log;
 import com.meihaofenqi.base.ApiConfig;
 import com.meihaofenqi.base.ApiConfigKit;
 import com.meihaofenqi.utils.encrypt.SignatureCheckKit;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class MsgInterceptor implements Interceptor {
 
 
-    private static final Log log = Log.getLog(MsgInterceptor.class);
-
     private static AppIdParser _parser = new AppIdParser.DefaultParameterAppIdParser();
-
 
     @Override
     public void intercept(Invocation inv) {

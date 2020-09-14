@@ -11,14 +11,14 @@ public class CacheKeyBuilder {
      * access_token缓存key
      */
     public static String accessTokenKey(String appId) {
-        return appId.substring(0, 8) + ":atoken";
+        return "wx:at:" + appId.substring(0, 5);
     }
 
     /**
      * jsapi_ticket缓存key
      */
     public static String jsApiKey(String appId) {
-        return appId.substring(0, 5) + ":jsapi";
+        return "wx:js:" + appId.substring(0, 5);
     }
 
 

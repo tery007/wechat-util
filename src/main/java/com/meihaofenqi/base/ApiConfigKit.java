@@ -3,6 +3,7 @@ package com.meihaofenqi.base;
 import com.meihaofenqi.exception.WechatException;
 import com.meihaofenqi.utils.redis.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 
 import java.util.Map;
 import java.util.Objects;
@@ -84,8 +85,16 @@ public class ApiConfigKit {
     }
 
 
+    /**
+     * 未传appId的则取默认值
+     */
     public static ApiConfig getApiConfig(String appId) {
-        ApiConfig cfg = CFG_MAP.get(appId);
+        ApiConfig cfg = null;
+        if (StringUtils.isBlank(appId)) {
+            cfg = CFG_MAP.get(DEFAULT_CFG_KEY);
+        } else {
+            cfg = CFG_MAP.get(appId);
+        }
         if (cfg == null) {
             throw new WechatException("需事先调用 ApiConfigKit.putApiConfig(apiConfig) 将 appId对应的 ApiConfig 对象存入");
         }
