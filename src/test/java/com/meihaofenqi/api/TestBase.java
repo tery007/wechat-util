@@ -14,9 +14,9 @@ import com.meihaofenqi.utils.redis.JedisConfig;
 public class TestBase {
 
     /** 测试微信号 */
-    public static final String APPID_TEST     = "wxbe822210e70823fd";
-    public static final String APPSECRET_TEST = "e10501e01aef7c796380c024228877d5";
-    public static final String TOKEN          = "QFrmM3uMyoKXTCGBnythHO";
+    public static final String APPID_TEST     = "xxx";
+    public static final String APPSECRET_TEST = "xxx";
+    public static final String TOKEN          = "xxx";
 
     public static ApiConfig testConf;
 
