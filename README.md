@@ -7,8 +7,9 @@
 ## 使用方式
 ### 1、 引入jar包：
 ```
+上传到自己到mvn仓库
 <dependency>
-    <groupId>com.meihaofenqi</groupId>
+    <groupId>xxx/groupId>
     <artifactId>wechat-util</artifactId>
     <version>1.0.1-SNAPSHOT</version>
 </dependency>

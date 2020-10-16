@@ -29,7 +29,7 @@ public class MenuApiTest {
         localTestInit();
     }
 
-    public static final String BASE_URL = "https://wechat.zhoujie.meihaofenqi.net/";
+    public static final String BASE_URL = "https://xxx/";
 
     /**
      * 测试微信配置
