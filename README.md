@@ -66,4 +66,4 @@ RedisUtil redis = ApiConfigKit.getCache();
 ```
 ### 5、使用示例：
 ##### 详见应用demo：
-http://git.meihaofenqi.net/wanglei/wechat-util-demo.git
+https://github.com/tery007/wechat-util-demo
